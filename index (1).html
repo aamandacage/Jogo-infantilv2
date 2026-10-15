@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Aventura do Tempo</title>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Fredoka:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="cloud c1"></div><div class="cloud c2"></div>
+<div class="hill"></div><div class="hill h2"></div>
+<div class="ground"></div>
+<div class="track" aria-hidden="true"><div class="runner" id="runner">🧗</div><div class="flag">🏁</div></div>
+
+<main>
+<section class="panel" id="inicio">
+<p class="hero" aria-hidden="true">🏰</p>
+<h1 class="px">AVENTURA DO TEMPO</h1>
+<p>Corra pelo mundo da história! Acerte as 10 perguntas para chegar à bandeira e juntar moedas.</p>
+<button class="btn px" id="comecar">COMEÇAR</button>
+</section>
+
+<section class="panel hide" id="jogo" aria-live="polite">
+<div class="hud px"><span id="num">FASE 1-10</span><span id="pts">🪙 x0</span></div>
+<div class="qbox"><div class="q px" aria-hidden="true">?</div><h2 id="pergunta"></h2></div>
+<div id="opcoes"></div>
+<div class="fb px" id="fb"></div>
+<button class="btn px hide" id="prox">PRÓXIMA</button>
+</section>
+
+<section class="panel hide" id="fim">
+<p class="hero" id="troféu" aria-hidden="true">🏁</p>
+<h1 class="px" id="titulo-fim">FASE COMPLETA!</h1>
+<div class="stars" id="estrelas" aria-hidden="true"></div>
+<div class="score px" id="placar"></div>
+<p id="msg-fim"></p>
+<button class="btn px" id="again">JOGAR DE NOVO</button>
+</section>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>

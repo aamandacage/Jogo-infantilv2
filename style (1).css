@@ -1,0 +1,48 @@
+:root{--sky:#5c94fc;--brick:#c84c0c;--brick2:#e69c4c;--gold:#fcc03c;--ink:#1a1a2e;--pipe:#00a800;--pipe2:#80d010;--white:#fff;--ok:#00a800;--no:#d82800;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--sky:#1c2c6c}}
+:root[data-theme="dark"]{--sky:#1c2c6c}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;min-height:100vh;background:var(--sky);color:var(--ink);font-family:"Fredoka","Trebuchet MS",sans-serif;display:flex;justify-content:center;padding:14px 12px 150px;position:relative;overflow-x:hidden}
+.px{font-family:"Press Start 2P","Courier New",monospace}
+/* cenário */
+.cloud{position:fixed;width:90px;height:30px;background:#fff;border-radius:30px;box-shadow:20px -14px 0 #fff,46px -6px 0 #fff;opacity:.95;z-index:0;animation:drift 60s linear infinite}
+.c1{top:12%;left:-120px}.c2{top:28%;left:-120px;animation-duration:90s;animation-delay:-40s;transform:scale(.7)}
+@keyframes drift{to{left:110%}}
+.hill{position:fixed;bottom:64px;left:5%;width:200px;height:90px;background:#00a800;border:4px solid var(--ink);border-radius:100px 100px 0 0;z-index:0}
+.hill.h2{left:auto;right:4%;width:150px;height:60px}
+.ground{position:fixed;bottom:0;left:0;right:0;height:64px;z-index:0;border-top:4px solid var(--ink);background:
+linear-gradient(var(--ink),var(--ink)) 0 50%/100% 3px no-repeat,
+repeating-linear-gradient(90deg,transparent 0 47px,var(--ink) 47px 50px),var(--brick)}
+/* conteúdo */
+main{position:relative;z-index:1;width:100%;max-width:560px}
+.panel{background:var(--brick2);border:4px solid var(--ink);box-shadow:6px 6px 0 var(--ink);padding:18px}
+.hud{display:flex;justify-content:space-between;font-size:.7rem;color:#fff;text-shadow:2px 2px 0 var(--ink);margin-bottom:12px;gap:8px}
+h1{font-size:1.5rem;line-height:1.5;color:var(--gold);text-shadow:3px 3px 0 var(--ink);margin:6px 0 14px}
+p{font-size:1.15rem;line-height:1.5;margin:0 0 14px;font-weight:500}
+.hero{font-size:3rem;text-align:center;margin:0}
+.btn{display:block;width:100%;font-size:.9rem;line-height:1.5;padding:16px 12px;background:var(--pipe);color:#fff;text-shadow:2px 2px 0 var(--ink);border:4px solid var(--ink);box-shadow:inset -6px -6px 0 rgba(0,0,0,.25),inset 6px 6px 0 var(--pipe2),4px 4px 0 var(--ink);cursor:pointer}
+.btn:active{transform:translate(4px,4px);box-shadow:inset -6px -6px 0 rgba(0,0,0,.25),inset 6px 6px 0 var(--pipe2)}
+.btn:focus-visible,.opt:focus-visible{outline:4px solid #fff;outline-offset:2px}
+.qbox{display:flex;gap:12px;align-items:flex-start;margin-bottom:16px}
+.q{flex:none;width:52px;height:52px;background:var(--gold);border:4px solid var(--ink);display:grid;place-items:center;font-size:1.4rem;box-shadow:inset -5px -5px 0 #c08000,inset 5px 5px 0 #ffe080}
+h2{font-size:1.3rem;line-height:1.3;margin:0;font-weight:700}
+.opt{display:block;width:100%;text-align:left;font:700 1.1rem/1.3 "Fredoka","Trebuchet MS",sans-serif;color:var(--ink);padding:13px 14px;margin-bottom:12px;background:#fff;border:4px solid var(--ink);box-shadow:4px 4px 0 var(--ink);cursor:pointer}
+.opt:hover:not(:disabled){background:#fff3c4}
+.opt:disabled{cursor:default}
+.opt.right{background:#a8f0a8;border-color:var(--ok)}
+.opt.wrong{background:#ffb4a8;border-color:var(--no)}
+.fb{min-height:1.6em;font-size:.7rem;line-height:1.6;margin:4px 0 12px}
+.hide{display:none}
+/* pista */
+.track{position:fixed;left:0;right:0;bottom:64px;height:60px;z-index:2;pointer-events:none}
+.flag{position:absolute;right:10px;bottom:0;font-size:2.2rem}
+.runner{position:absolute;bottom:0;left:0;font-size:2.2rem;transition:left .6s ease}
+.runner.jump{animation:jump .5s}
+@keyframes jump{40%{transform:translateY(-34px)}}
+.coinpop{position:fixed;z-index:5;font-size:2rem;pointer-events:none;animation:pop .8s forwards}
+@keyframes pop{0%{transform:translateY(0);opacity:1}60%{transform:translateY(-70px) rotate(360deg);opacity:1}100%{transform:translateY(-90px);opacity:0}}
+.stars{font-size:2.2rem;text-align:center;letter-spacing:6px;margin:6px 0 10px}
+.score{font-size:.8rem;line-height:1.6;text-align:center;margin-bottom:14px}
+@media (prefers-reduced-motion:reduce){.cloud{animation:none;left:10%}.runner{transition:none}.runner.jump,.coinpop{animation:none}}
